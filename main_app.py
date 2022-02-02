@@ -13,6 +13,12 @@ model = load_model('plant_disease.h5')
 CLASS_NAMES = ['Corn-Common_rust', 'Potato-Early_blight', 'Tomato-Bacterial_spot']
 
 #Setting Title of App
+st.image("plant.jpg", width = 600, )
+html_temp = """
+    <div style="background-color:tomato;padding:10px">
+    <h2 style="color:red;text-align:center;">Plant Disease Detection AI App </h2>
+    </div>
+    """
 st.title("Plant Disease Detection")
 st.markdown("Upload an image of the plant leaf")
 
@@ -43,3 +49,9 @@ if submit:
         result = CLASS_NAMES[np.argmax(Y_pred)]
         st.title(str("This is "+result.split('-')[0]+ " leaf with " + result.split('-')[1]))
         print(result)
+
+
+if st.button("About Author"):
+               st.text("Name : Orimolade Eyimofe") 
+               st.text("Email : eyimofeOkikiola@gmail.com") 
+               
