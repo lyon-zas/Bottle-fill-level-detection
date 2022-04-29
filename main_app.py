@@ -7,23 +7,23 @@ from keras.models import load_model
 
 
 #Loading the Model
-model = load_model('plant_disease.h5')
+model = load_model('bottle_fill_level.h5')
 
 #Name of Classes
-CLASS_NAMES = ['Corn-Common_rust', 'Potato-Early_blight', 'Tomato-Bacterial_spot']
+CLASS_NAMES = ['correctly_filled', 'over_filled', 'under_filled']
 
 #Setting Title of App
-st.image("plant.jpg", width = 600, )
+st.image("bottle.JPG", width = 500, )
 html_temp = """
     <div style="background-color:tomato;padding:10px">
-    <h2 style="color:red;text-align:center;">Plant Disease Detection AI App </h2>
+    <h2 style="color:red;text-align:center;">Bottle fill level Detection AI App </h2>
     </div>
     """
-st.title("Plant Disease Detection")
-st.markdown("Upload an image of the plant leaf")
+st.title("Bottle fill level Detection")
+st.markdown("Upload an image of the bottle")
 
-#Uploading the dog image
-plant_image = st.file_uploader("Choose an image...", type="jpeg")
+#Uploading the bottle image
+plant_image = st.file_uploader("Choose an image...", type="jpg")
 submit = st.button('Predict')
 #On predict button click
 if submit:
@@ -47,11 +47,11 @@ if submit:
         #Make Prediction
         Y_pred = model.predict(opencv_image)
         result = CLASS_NAMES[np.argmax(Y_pred)]
-        st.title(str("This is "+result.split('-')[0]+ " leaf with " + result.split('-')[1]))
+        st.title(str("The bottle is "+result.split('-')[0]))
         print(result)
 
 
 if st.button("About Author"):
-               st.text("Name : Orimolade Eyimofe") 
+               st.text("Name : Orimolade Eyimofe && Temitope Osifalujo") 
                st.text("Email : eyimofeOkikiola@gmail.com") 
                
